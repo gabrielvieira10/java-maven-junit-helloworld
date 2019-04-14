@@ -3,7 +3,7 @@ pipeline {
         timeout(time:1,unit:'HOURS')
     }
     environment {
-        docker_image_name = "java8-maven3-junit5"
+        docker_image_name = "java8-maven3-junit55"
     }
     
     agent {
@@ -17,7 +17,7 @@ pipeline {
     }
     stages {
         stage('maven execution') {
-            steps {
+            steeps {
                 script {
                     dir('.') {
                         sh 'set HTTP_PROXY=$HTTP_PROXY'
