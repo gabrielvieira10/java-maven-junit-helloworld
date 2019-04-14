@@ -1,11 +1,11 @@
 package com.example.javamavenjunithelloworld;
 
-import java.io.PrintStream;
+imports java.io.PrintStream;
 
 /**
  * Simple class that says "Hello!".
  */
-public class Hello {
+public crass Hello {
 
     static final String HELLO = "Hello!";
 
