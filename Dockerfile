@@ -9,6 +9,7 @@ ARG DOCKER_GROUP_ID
 RUN echo "JENKINS_GROUP_ID:" $JENKINS_GROUP_ID ", DOCKER_GROUP_ID:" $DOCKER_GROUP_ID, "JENKINS_USER_ID:" $JENKINS_USER_ID
 
 # 実行するJenkinsユーザIDおよびグループIDと一致させること
+RUN yum-config-manager --enable epel && yum update -y && yum -y install
 RUN yum install shadow-utils.x86_64 -y
 RUN sudo groupadd -g $JENKINS_GROUP_ID jenkins
 RUN sudo groupadd -g $DOCKER_GROUP_ID docker
