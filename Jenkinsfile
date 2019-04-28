@@ -8,7 +8,7 @@ pipeline {
     
     agent {
     dockerfile {
-        additionalBuildArgs '--no-cache=true --build-arg "JENKINS_USER_ID=112" --build-arg "JENKINS_GROUP_ID=117" --build-arg "DOCKER_GROUP_ID=999"'
+        additionalBuildArgs '--no-cache=true --build-arg "JENKINS_USER_ID=112" --build-arg "JENKINS_GROUP_ID=117"'
         args '-v ${PWD}/.m2:/usr/share/maven/.m2'
         dir '.'
         filename 'Dockerfile'
@@ -20,6 +20,7 @@ pipeline {
             steps {
                 script {
                     dir('.') {
+                        sh 'id'
                         sh 'set HTTP_PROXY=$HTTP_PROXY'
                         sh 'set HTTPS_PROXY=$HTTP_PROXY'
                         sh 'mvn clean package site'
