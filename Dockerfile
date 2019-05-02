@@ -10,6 +10,6 @@ RUN echo "JENKINS_GROUP_ID:" $JENKINS_GROUP_ID, "JENKINS_USER_ID:" $JENKINS_USER
 
 # 実行するJenkinsユーザIDおよびグループIDと一致させること
 RUN adduser -u $JENKINS_USER_ID --disabled-password jenkins
-RUN addgroup jenkins docker
+# RUN addgroup jenkins docker
 RUN addgroup jenkins jenkins
 USER jenkins
