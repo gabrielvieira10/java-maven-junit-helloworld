@@ -9,5 +9,5 @@ ARG DOCKER_GROUP_ID
 RUN echo "JENKINS_GROUP_ID:" $JENKINS_GROUP_ID, "JENKINS_USER_ID:" $JENKINS_USER_ID
 
 # 実行するJenkinsユーザIDおよびグループIDと一致させること
-RUN addgroup -g $JENKINS_GROUP_ID jenkins && adduser -u $JENKINS_USER_ID -G jenkins
+RUN addgroup -g $JENKINS_GROUP_ID jenkins && adduser -u $JENKINS_USER_ID -G jenkins jenkins
 USER jenkins
