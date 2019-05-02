@@ -20,7 +20,8 @@ pipeline {
             steps {
                 script {
                     dir('.') {
-                        sh 'addgroup -g 999 docker'
+                        sh 'id'
+                        sh 'sudo addgroup -g 999 docker'
                         sh 'id'
                         sh 'set HTTP_PROXY=$HTTP_PROXY'
                         sh 'set HTTPS_PROXY=$HTTP_PROXY'
