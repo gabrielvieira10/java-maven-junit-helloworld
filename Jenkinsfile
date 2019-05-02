@@ -9,7 +9,7 @@ pipeline {
     agent {
     dockerfile {
         additionalBuildArgs '--no-cache=true --build-arg "JENKINS_USER_ID=112" --build-arg "JENKINS_GROUP_ID=117" --build-arg "DOCKER_GROUP_ID=999"'
-        args '-u 112:117 --group-add 999 -v ${PWD}/.m2:/usr/share/maven/.m2'
+        args '--group-add 117 --group-add 999 -v ${PWD}/.m2:/usr/share/maven/.m2'
         dir '.'
         filename 'Dockerfile'
         label env.docker_image_name
@@ -20,8 +20,6 @@ pipeline {
             steps {
                 script {
                     dir('.') {
-                        sh 'id'
-                        sh 'sudo addgroup -g 999 docker'
                         sh 'id'
                         sh 'set HTTP_PROXY=$HTTP_PROXY'
                         sh 'set HTTPS_PROXY=$HTTP_PROXY'
