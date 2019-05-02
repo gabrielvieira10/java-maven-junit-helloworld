@@ -15,3 +15,4 @@ RUN delgroup ping
 RUN addgroup -g $JENKINS_GROUP_ID jenkins
 RUN addgroup -g $DOCKER_GROUP_ID docker
 RUN adduser --uid $JENKINS_USER_ID -G docker --disabled-password jenkins
+RUN id jenkins
