@@ -13,6 +13,8 @@ RUN apk --no-cache add shadow
 RUN id
 RUN delgroup ping
 RUN addgroup -g $DOCKER_GROUP_ID docker
-RUN adduser --uid $JENKINS_USER_ID -G jenkins --disabled-password jenkins
+RUN addgroup -g $JENKINS_GROUP_ID jenkins
+RUN adduser --uid $JENKINS_USER_ID --disabled-password jenkins
+RUN adduser jenkins jenkins
 RUN adduser jenkins docker
 RUN id jenkins
