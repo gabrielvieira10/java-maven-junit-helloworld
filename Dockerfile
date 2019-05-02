@@ -10,8 +10,8 @@ RUN echo "JENKINS_GROUP_ID:" $JENKINS_GROUP_ID, "JENKINS_USER_ID:" $JENKINS_USER
 
 # 実行するJenkinsユーザIDおよびグループIDと一致させること
 RUN apk --no-cache add shadow
-RUN groupmod -g $JENKINS_GROUP_ID jenkins
-RUN adduser -u $JENKINS_USER_ID --disabled-password jenkins
+RUN adduser --uid $JENKINS_USER_ID --gid $JENKINS_GROUP_ID --disabled-password jenkins
+# RUN groupmod -g $JENKINS_GROUP_ID jenkins
 # RUN addgroup jenkins docker
 RUN adduser jenkins jenkins
 USER jenkins
