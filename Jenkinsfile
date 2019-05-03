@@ -33,7 +33,7 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Step counter stage"'
-                        stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/**/*.java', filePatternExclude: '', key: 'Java'], [encoding: 'UTF-8', filePattern: 'src/test/**/*.java', filePatternExclude: 'src/test/java/sample/*.java', key: 'TestCode']]
+                        stepcounter settings: [[encoding: 'UTF-8', filePattern: 'src/main/**/*.java', filePatternExclude: '', key: 'Java'], [encoding: 'UTF-8', filePattern: 'src/test/**/*.java', filePatternExclude: '', key: 'TestCode']]
                     }
                 }
             }
