@@ -24,6 +24,7 @@ pipeline {
                         sh 'set HTTP_PROXY=$HTTP_PROXY'
                         sh 'set HTTPS_PROXY=$HTTP_PROXY'
                         sh 'mvn clean package site'
+                        junit testResults: '**/*.xml'
                     }
                 }
             }
