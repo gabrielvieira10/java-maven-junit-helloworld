@@ -43,5 +43,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            recordIssues enabledForFailure: true, tool: [$class: 'CheckStyle'], pattern: '**/checkstyle.xml'
+            recordIssues enabledForFailure: true, tool: [$class: 'SpotBugs']
+        }
+    }
 
 }
