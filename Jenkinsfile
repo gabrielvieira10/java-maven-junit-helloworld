@@ -36,7 +36,7 @@ pipeline {
                         def checkstyle = scanForIssues tool: [$class: 'CheckStyle'], pattern: '**/checkstyle.xml'
                         publishIssues issues:[checkstyle]
          
-                        def findbugs = scanForIssues tool: [$class: 'FindBugs'], pattern: '**/findbugsXml.xml'
+                        def findbugs = scanForIssues tool: [$class: 'FindBugs']'
                         publishIssues issues:[findbugs]
                     }
                 }
