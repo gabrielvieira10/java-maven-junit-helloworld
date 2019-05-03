@@ -33,11 +33,6 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
-                        def checkstyle = scanForIssues tool: [$class: 'CheckStyle'], pattern: '**/checkstyle.xml'
-                        publishIssues issues:[checkstyle]
-         
-                        def spotbugs = scanForIssues tool: [$class: 'SpotBugs']
-                        publishIssues issues:[spotbugs]
                     }
                 }
             }
@@ -45,8 +40,8 @@ pipeline {
     }
     post {
         always {
-            recordIssues enabledForFailure: true, tool: [$class: 'CheckStyle'], pattern: '**/checkstyle.xml'
-            recordIssues enabledForFailure: true, tool: [$class: 'SpotBugs']
+            recordIssues enabledForFailure: true, tool: checkStyle(pattern: '**/checkstyle.xml')
+            recordIssues enabledForFailure: true, tool: spotBugs()
         }
     }
 
