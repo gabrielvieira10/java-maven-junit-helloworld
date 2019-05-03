@@ -40,7 +40,7 @@ pipeline {
     }
     post {
         always {
-            recordIssues enabledForFailure: true, tool: checkStyle(pattern: '**/checkstyle.xml')
+            recordIssues enabledForFailure: true, tool: checkStyle()
             recordIssues enabledForFailure: true, tool: spotBugs()
         }
     }
