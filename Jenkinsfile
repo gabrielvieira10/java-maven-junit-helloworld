@@ -28,6 +28,17 @@ pipeline {
                 }
             }
         }
+        stage('Analysis') {
+            steps {
+                script {
+                    dir('.') {
+                        sh 'echo "Analysis stage"'
+                        recordIssues enabledForFailure: true, tool: checkStyle()
+                        recordIssues enabledForFailure: true, tool: spotBugs()
+                    }
+                }
+            }
+        }
         stage('Step counter') {
             steps {
                 script {
@@ -39,11 +50,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            recordIssues enabledForFailure: true, tool: checkStyle()
-            recordIssues enabledForFailure: true, tool: spotBugs()
-        }
-    }
-
 }
