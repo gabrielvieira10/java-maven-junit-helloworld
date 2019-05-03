@@ -33,11 +33,10 @@ pipeline {
                 script {
                     dir('.') {
                         sh 'echo "Analysis stage"'
-                        def checkstyle = scanForIssues tool: [$class: 'CheckStyle'], pattern: '**/checkstyle.xml'
-                        publishIssues issues:[checkstyle]
-         
-                        def findbugs = scanForIssues tool: [$class: 'FindBugs']
-                        publishIssues issues:[findbugs]
+                        recordIssues(
+                            enabledForFailure: true, aggregatingResults: true, 
+                            tools: [findbugs(), checkStyle(pattern: 'checkstyle.xml', reportEncoding: 'UTF-8')]
+                        )
                     }
                 }
             }
